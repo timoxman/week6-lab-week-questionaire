@@ -1,0 +1,20 @@
+<head>
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <h1 class="header"> TwentyOne Questions </h1>
+  <h3> A very bad interactive questionaire generator </h3>
+</head>
+
+<body>
+  <% if flash[:errors] && !flash[:errors].empty? %>
+    Sorry, there were the following problems with the form.
+    <ul id='errors'>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= yield %>
+
+</body>

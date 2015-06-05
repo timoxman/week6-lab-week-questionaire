@@ -1,0 +1,25 @@
+<html>
+<!-- why does shadow not work? -->
+    <body id='new-link' class="shadow">
+
+    <a href="/questionaire/new" class ="myButton">Add Questionaire</a>
+    <a href="/questions/new" class ="myButton">Add Question</a>
+
+      <% if @questionaires.count != 0 %>
+        <form action='/answers/new' method='post'>
+              <select class = "selector myButton " >
+                <% @questionaires.each do |questionaire| %>
+                  <option value=questionaire.name><%= questionaire.name%></option>
+                <% end %>
+              </select>
+          <input type='submit' class ="myButton" value='Answer Questionaire'>
+        </form>
+      <% end %>
+
+    <a href="/answers/view" class ="myButton">Review Answers</a>
+
+    </body>
+
+</html>
+
+

@@ -1,0 +1,23 @@
+<html>
+
+    <body id='new-link' class="shadow">
+    Use this page to add new questionaires to the application
+      <ul>
+        <% @questionaires.each do |questionaire| %>
+          <li><%= questionaire.name %></a></li>
+        <% end %>
+      </ul>
+
+    <div id='new-link'>
+      <form action='/questionaire' method='post'>
+        Questionaire: <input type='text' name='questionaireName'>
+        <input type='submit' value='Add Questionaire'>
+      </form>
+    </div>
+
+    <a href="/" class ="myButton">Home</a>
+    <a href="/questionaire/delete" class ="myButton">Delete Questionaires</a>
+
+    </body>
+
+</html>

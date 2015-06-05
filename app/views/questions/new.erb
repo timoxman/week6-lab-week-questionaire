@@ -1,0 +1,52 @@
+<html>
+
+    <body id='new-link' class="shadow">
+
+
+    <%if @chosenQuestionaire %>
+
+      <div>
+        <giveninfo>
+          Questionaire chosen: <%= @chosenQuestionaire %>
+          <ul>
+            <% @questions.each do |questions| %>
+              <li><%= questions.text %></a></li>
+            <% end %>
+          </ul>
+        </giveninfo>
+        <form action='/questions' method='post'>
+          Question: <input type='text' name='questionText'>
+          Answer Type:
+          <select class = "selector myButton" name='answerType' >
+            <option value="YesNo">YesNo</option>
+            <option value="Text">Text</option>
+          </select>
+          Default: <input type='text' name='default'>
+          Mandatory:
+          <select class = "selector myButton" name='mandatory' >
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+          </select>
+          <input type='submit' class ="myButton" value='Submit'>
+        </form>
+      </div>
+
+    <% else %>
+      <!-- A questionaire needs to be selected -->
+      <div>
+        <form action='/questions/setup' method='post'>
+          <select class = "selector myButton " name='questionaireID' >
+            <% @questionaires.each do |questionaire| %>
+              <option value = <%= questionaire.id %> ><%= questionaire.name%></option>
+            <% end %>
+          </select>
+          <input type='submit' class ="myButton" value='Select Questionaire'>
+        </form>
+      </div>
+
+    <% end %>
+
+      <a href="/" class ="myButton">Home</a>
+    </body>
+
+</html>
